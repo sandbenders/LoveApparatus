@@ -1,35 +1,24 @@
 import sys
 
-from PyQt5.QtGui import *
-from PyQt5.QtWidgets import *
-from PyQt5.QtCore import *
-
-BACKGROUND_COLOR = Qt.black
+from PyQt5 import QtCore, QtGui, QtWidgets
+from loveApparatusInterface import Ui_MainWindow
 
 
-class Window(QWidget):
-    def __init__(self):
-        super().__init__()
+class Window(Ui_MainWindow):
+    def __init__(self, window):
+        Ui_MainWindow.__init__(self)
 
         # config the window
-        self.init_ui()
+        self.setupUi(window)
 
-    def init_ui(self):
-        self.setGeometry(0, 0, 1920, 1080)
-        self.setWindowTitle('#LoveApparatus')
-        self.setCursor(Qt.BlankCursor)
 
-        # Set window background color
-        self.setAutoFillBackground(True)
-        p = self.palette()
-        p.setColor(self.backgroundRole(), BACKGROUND_COLOR)
-        self.setPalette(p)
-
-        self.show()
-        # self.showFullScreen()
+def main():
+    app = QtWidgets.QApplication(sys.argv)
+    window = QtWidgets.QMainWindow()
+    prog = Window(window)
+    window.show()
+    sys.exit(app.exec_())
 
 
 if __name__ == '__main__':
-    app = QApplication(sys.argv)
-    ex = Window()
-    sys.exit(app.exec_())
+    main()
