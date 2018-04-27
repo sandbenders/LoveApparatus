@@ -23,6 +23,20 @@ class Ui_MainWindow(object):
 "font: 50pt \"Alternate Gothic No2 D\";\n"
 "")
         self.title.setObjectName("title")
+        self.info = QtWidgets.QLabel(self.centralwidget)
+        self.info.setGeometry(QtCore.QRect(80, 960, 381, 31))
+        self.info.setStyleSheet("color: rgb(130, 150, 180);\n"
+"font: 25pt \"Alternate Gothic No2 D\";\n"
+"")
+        self.info.setObjectName("info")
+        self.textEdit = QtWidgets.QTextEdit(self.centralwidget)
+        self.textEdit.setGeometry(QtCore.QRect(80, 240, 1760, 631))
+        self.textEdit.setStyleSheet("color: rgb(255, 255, 255);\n"
+"font: 100pt \"AlternateGotNo3D\";")
+        self.textEdit.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        self.textEdit.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        self.textEdit.setReadOnly(True)
+        self.textEdit.setObjectName("textEdit")
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
@@ -32,4 +46,10 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "#LoveApparatus"))
         self.title.setText(_translate("MainWindow", "#LoveApparatus"))
+        self.info.setText(_translate("MainWindow", "tweet using the hashtag #LoveApparatus"))
+        self.textEdit.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'AlternateGotNo3D\'; font-size:100pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:80%;\">Love is like the wind, you can\'t see it but you can feel it</p></body></html>"))
 

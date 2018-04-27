@@ -1,3 +1,5 @@
+# pyuic5 loveApparatusInterface.ui -o ../loveApparatusInterface.py
+
 import sys
 
 from PyQt5 import QtCore, QtGui, QtWidgets
@@ -16,7 +18,7 @@ def main():
     app = QtWidgets.QApplication(sys.argv)
     window = QtWidgets.QMainWindow()
     prog = Window(window)
-    window.show()
+    window.showFullScreen()
     sys.exit(app.exec_())
 
 
