@@ -2,6 +2,7 @@
 # nltk.download('punkt')
 
 import sys
+import re
 
 from PyQt5 import QtWidgets
 from PyQt5.QtCore import QTimer
@@ -39,11 +40,16 @@ class Window(Ui_MainWindow):
 
     def love_sentences(self):
         has_bad_words = True
+        sentence = ''
         while has_bad_words:
             sentence = self.database.get_love_sentence()
             has_bad_words = self.bad_words.has_bad_words(sentence)
-            self.mainText.setHtml(MAIN_TEXT_FORMAT.replace('MESSAGE', sentence))
-            print("{} {}".format(sentence, len(sentence)))
+
+        # insert line break after '.'
+        rx = r"\. "
+        sentence_new_lines = re.sub(rx, '.<br />', sentence)
+        self.mainText.setHtml(MAIN_TEXT_FORMAT.replace('MESSAGE', sentence_new_lines))
+        print("{} {}".format(sentence_new_lines, len(sentence_new_lines)))
 
 
 def main():

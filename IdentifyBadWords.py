@@ -1,3 +1,5 @@
+# http://pad.yohdah.com/401/python-has-bad-words
+
 import nltk
 
 
