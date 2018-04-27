@@ -29,14 +29,15 @@ class Ui_MainWindow(object):
 "font: 25pt \"Alternate Gothic No2 D\";\n"
 "")
         self.info.setObjectName("info")
-        self.textEdit = QtWidgets.QTextEdit(self.centralwidget)
-        self.textEdit.setGeometry(QtCore.QRect(80, 240, 1760, 631))
-        self.textEdit.setStyleSheet("color: rgb(255, 255, 255);\n"
+        self.mainText = QtWidgets.QTextEdit(self.centralwidget)
+        self.mainText.setGeometry(QtCore.QRect(80, 240, 1760, 631))
+        self.mainText.viewport().setProperty("cursor", QtGui.QCursor(QtCore.Qt.BlankCursor))
+        self.mainText.setStyleSheet("color: rgb(255, 255, 255);\n"
 "font: 100pt \"AlternateGotNo3D\";")
-        self.textEdit.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
-        self.textEdit.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
-        self.textEdit.setReadOnly(True)
-        self.textEdit.setObjectName("textEdit")
+        self.mainText.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        self.mainText.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        self.mainText.setReadOnly(True)
+        self.mainText.setObjectName("mainText")
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
@@ -47,7 +48,7 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(_translate("MainWindow", "#LoveApparatus"))
         self.title.setText(_translate("MainWindow", "#LoveApparatus"))
         self.info.setText(_translate("MainWindow", "tweet using the hashtag #LoveApparatus"))
-        self.textEdit.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+        self.mainText.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'AlternateGotNo3D\'; font-size:100pt; font-weight:400; font-style:normal;\">\n"

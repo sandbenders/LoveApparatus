@@ -59,7 +59,7 @@ font: 25pt &quot;Alternate Gothic No2 D&quot;;
      <string>tweet using the hashtag #LoveApparatus</string>
     </property>
    </widget>
-   <widget class="QTextEdit" name="textEdit">
+   <widget class="QTextEdit" name="mainText">
     <property name="geometry">
      <rect>
       <x>80</x>
@@ -67,6 +67,9 @@ font: 25pt &quot;Alternate Gothic No2 D&quot;;
       <width>1760</width>
       <height>631</height>
      </rect>
+    </property>
+    <property name="cursor" stdset="0">
+     <cursorShape>BlankCursor</cursorShape>
     </property>
     <property name="styleSheet">
      <string notr="true">color: rgb(255, 255, 255);
