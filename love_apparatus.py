@@ -35,7 +35,7 @@ class Window(Ui_MainWindow):
     def love_sentences(self):
         sentence = self.database.get_love_sentence()
         self.mainText.setHtml(MAIN_TEXT_FORMAT.replace('MESSAGE', sentence))
-
+        print("{} {}".format(sentence, len(sentence)))
 
 def main():
     app = QtWidgets.QApplication(sys.argv)
