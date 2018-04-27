@@ -1,5 +1,7 @@
 # pyuic5 loveApparatusInterface.ui -o ../loveApparatusInterface.py
 # nltk.download('punkt')
+# nltk.download('averaged_perceptron_tagger')
+# nltk.download('wordnet')
 
 import sys
 import re
@@ -9,6 +11,7 @@ from PyQt5.QtCore import QTimer
 
 from Database import *
 from IdentifyBadWords import *
+from ReplaceWords import *
 from loveApparatusInterface import Ui_MainWindow
 
 MAIN_TEXT_FORMAT = "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\"><html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">p, li { white-space: pre-wrap; }</style></head><body style=\" font-family:\'AlternateGotNo3D\'; font-size:95pt; font-weight:400; font-style:normal;\"><p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:80%;\">MESSAGE</p></body></html>"
@@ -31,6 +34,9 @@ class Window(Ui_MainWindow):
         # bad words
         self.bad_words = IdentifyBadWords()
 
+        # replace words
+        self.replace_words = ReplaceWords()
+
         # first sentence
         self.love_sentences()
 
@@ -44,6 +50,9 @@ class Window(Ui_MainWindow):
         while has_bad_words:
             sentence = self.database.get_love_sentence()
             has_bad_words = self.bad_words.has_bad_words(sentence)
+
+        # replace words
+        self.replace_words.replace(sentence)
 
         # insert line break after '.'
         rx = r"\. "
