@@ -18,6 +18,17 @@ class Database:
 
         sentence = list(self.collection.aggregate(pipeline))[0]
 
-        print(sentence['text'])
+        return sentence['text']
 
-        return sentence
+
+# def thread_func():
+#     print("Thread works")
+#     timer = QtCore.QTimer()
+#     timer.timeout.connect(timer_func)
+#     timer.start(1000)
+#     print(timer.remainingTime())
+#     print(timer.isActive())
+#     timers.append(timer)
+#
+# def timer_func():
+#     print("Timer works")
