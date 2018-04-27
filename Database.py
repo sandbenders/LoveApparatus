@@ -12,6 +12,7 @@ class Database:
 
     def get_love_sentence(self):
         pipeline = [
+            {"$match": {"$text": {"$search": "love"}}},
             {"$project": {"_id": 0, "text": 1}},
             {"$redact": {"$cond": [{"$lte": [{"$strLenCP": "$text"}, 140]}, "$$KEEP", "$$PRUNE"]}},
             {"$sample": {"size": 1}}
