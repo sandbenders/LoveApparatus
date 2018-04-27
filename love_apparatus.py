@@ -52,13 +52,16 @@ class Window(Ui_MainWindow):
             has_bad_words = self.bad_words.has_bad_words(sentence)
 
         # replace words
-        self.replace_words.replace(sentence)
+        mixed_sentence = self.replace_words.replace(sentence)
 
         # insert line break after '.'
         rx = r"\. "
-        sentence_new_lines = re.sub(rx, '.<br />', sentence)
+        sentence_new_lines = re.sub(rx, '.<br />', mixed_sentence)
         self.mainText.setHtml(MAIN_TEXT_FORMAT.replace('MESSAGE', sentence_new_lines))
         print("{} {}".format(sentence_new_lines, len(sentence_new_lines)))
+
+        # insert sentences in the database
+        self.database.insert_generated_sentences(sentence, mixed_sentence)
 
 
 def main():

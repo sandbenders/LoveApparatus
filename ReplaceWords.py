@@ -26,7 +26,7 @@ class ReplaceWords():
         sentence = self.search_and_replace(nouns, sentence)
         sentence = self.search_and_replace(verbs, sentence)
 
-        print(sentence.capitalize())
+        return sentence.capitalize()
 
     def remove_words_from_list(self, list):
         words_to_remove = ['is',
@@ -36,7 +36,12 @@ class ReplaceWords():
                            'was',
                            'were',
                            'have',
-                           'has']
+                           'has',
+                           'men',
+                           'man',
+                           'women',
+                           'woman',
+                           'lovers']
         for word in words_to_remove:
             while True:
                 try:
@@ -48,7 +53,7 @@ class ReplaceWords():
     def search_and_replace(self, list, sentence):
         if list:
             for element in list:
-                if bool(random.getrandbits(1)):
+                if random.uniform(0, 1) > 0.9:
                     synonyms = []
                     for syn in wordnet.synsets(element):
                         for l in syn.lemmas():

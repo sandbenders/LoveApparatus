@@ -1,5 +1,7 @@
 from pymongo import MongoClient
 
+import datetime
+
 
 class Database:
     def __init__(self):
@@ -7,6 +9,7 @@ class Database:
         self.client = MongoClient()
         self.db = self.client.love_apparatus
         self.collection_sentences = self.db.love_sentences
+        self.collection_generated_sentences = self.db.generated_sentences
 
     def get_love_sentence(self):
         pipeline = [
@@ -20,3 +23,11 @@ class Database:
 
         return sentence['text']
 
+    def insert_generated_sentences(self, original, mixed):
+        generated_sentence = {
+            'original_sentence': original,
+            'mixed_sentence': mixed,
+            'date': datetime.datetime.utcnow()
+        }
+
+        self.collection_generated_sentences.insert(generated_sentence)
