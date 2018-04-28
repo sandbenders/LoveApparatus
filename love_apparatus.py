@@ -63,6 +63,7 @@ class Window(Ui_MainWindow):
         mixed_sentence = re.sub(rx, 'I', mixed_sentence)
         rx = r"\bi'm\b"
         mixed_sentence = re.sub(rx, "I'm", mixed_sentence)
+        mixed_sentence = mixed_sentence.replace("_", " ")
 
         # insert line break after '.'
         rx = r"\. "

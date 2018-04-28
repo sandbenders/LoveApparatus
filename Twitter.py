@@ -13,4 +13,7 @@ class Twitter:
         self.api = API(self.auth)
 
     def update_status(self, sentence):
-        self.api.update_status(sentence)
+        try:
+            self.api.update_status(sentence)
+        except:
+            pass
