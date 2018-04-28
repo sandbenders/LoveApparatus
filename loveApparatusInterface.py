@@ -33,6 +33,7 @@ class Ui_MainWindow(object):
         self.mainText.setGeometry(QtCore.QRect(80, 240, 1760, 631))
         self.mainText.viewport().setProperty("cursor", QtGui.QCursor(QtCore.Qt.BlankCursor))
         self.mainText.setStyleSheet("color: rgb(255, 255, 255);\n"
+"border:5px solid rgb(0, 0, 0);\n"
 "font: 100pt \"AlternateGotNo3D\";")
         self.mainText.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
         self.mainText.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)

@@ -73,6 +73,7 @@ font: 25pt &quot;Alternate Gothic No2 D&quot;;
     </property>
     <property name="styleSheet">
      <string notr="true">color: rgb(255, 255, 255);
+border:5px solid rgb(0, 0, 0);
 font: 100pt &quot;AlternateGotNo3D&quot;;</string>
     </property>
     <property name="verticalScrollBarPolicy">
