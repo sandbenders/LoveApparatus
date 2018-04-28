@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'loveApparatusInterface.ui'
 #
-# Created by: PyQt5 UI code generator 5.10.1
+# Created by: PyQt5 UI code generator 5.6
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -18,13 +18,13 @@ class Ui_MainWindow(object):
         self.centralwidget.setAutoFillBackground(False)
         self.centralwidget.setObjectName("centralwidget")
         self.title = QtWidgets.QLabel(self.centralwidget)
-        self.title.setGeometry(QtCore.QRect(80, 80, 301, 51))
+        self.title.setGeometry(QtCore.QRect(80, 80, 581, 51))
         self.title.setStyleSheet("color: rgb(247, 169, 65);\n"
 "font: 50pt \"Alternate Gothic No2 D\";\n"
 "")
         self.title.setObjectName("title")
         self.info = QtWidgets.QLabel(self.centralwidget)
-        self.info.setGeometry(QtCore.QRect(80, 960, 381, 31))
+        self.info.setGeometry(QtCore.QRect(80, 960, 611, 31))
         self.info.setStyleSheet("color: rgb(130, 150, 180);\n"
 "font: 25pt \"Alternate Gothic No2 D\";\n"
 "")
@@ -52,5 +52,5 @@ class Ui_MainWindow(object):
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'AlternateGotNo3D\'; font-size:100pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:80%;\"><br /></p></body></html>"))
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
 
