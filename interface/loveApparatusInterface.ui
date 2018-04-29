@@ -46,7 +46,7 @@ font: 50pt &quot;Alternate Gothic No2 D&quot;;
      <rect>
       <x>80</x>
       <y>960</y>
-      <width>611</width>
+      <width>1751</width>
       <height>31</height>
      </rect>
     </property>
@@ -56,7 +56,7 @@ font: 25pt &quot;Alternate Gothic No2 D&quot;;
 </string>
     </property>
     <property name="text">
-     <string>tweet using the hashtag #LoveApparatus</string>
+     <string>tweet using the hashtags #LoveApparatus or #LoveLeics</string>
     </property>
    </widget>
    <widget class="QTextEdit" name="mainText">

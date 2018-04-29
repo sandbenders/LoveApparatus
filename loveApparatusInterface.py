@@ -24,7 +24,7 @@ class Ui_MainWindow(object):
 "")
         self.title.setObjectName("title")
         self.info = QtWidgets.QLabel(self.centralwidget)
-        self.info.setGeometry(QtCore.QRect(80, 960, 611, 31))
+        self.info.setGeometry(QtCore.QRect(80, 960, 1751, 31))
         self.info.setStyleSheet("color: rgb(130, 150, 180);\n"
 "font: 25pt \"Alternate Gothic No2 D\";\n"
 "")
@@ -48,7 +48,7 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "#LoveApparatus"))
         self.title.setText(_translate("MainWindow", "#LoveApparatus"))
-        self.info.setText(_translate("MainWindow", "tweet using the hashtag #LoveApparatus"))
+        self.info.setText(_translate("MainWindow", "tweet using the hashtags #LoveApparatus or #LoveLeics"))
         self.mainText.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
