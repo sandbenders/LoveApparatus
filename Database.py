@@ -23,10 +23,11 @@ class Database:
 
         return sentence['text']
 
-    def insert_generated_sentences(self, original, mixed):
+    def insert_generated_sentences(self, original, mixed, type):
         generated_sentence = {
             'original_sentence': original,
             'mixed_sentence': mixed,
+            'type': type,
             'date': datetime.datetime.utcnow()
         }
 

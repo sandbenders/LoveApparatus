@@ -4,7 +4,7 @@ from nltk.tag import pos_tag
 import random
 import re
 
-REPLACEMENT_RATIO = 0.75
+REPLACEMENT_RATIO = 0.90
 
 class ReplaceWords():
     def __init__(self):
@@ -55,6 +55,7 @@ class ReplaceWords():
         if list:
             for element in list:
                 if random.uniform(0, 1) > REPLACEMENT_RATIO:
+                    print(">>> replacing words")
                     synonyms = []
                     for syn in wordnet.synsets(element):
                         for l in syn.lemmas():

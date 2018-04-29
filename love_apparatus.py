@@ -4,15 +4,15 @@
 # nltk.download('wordnet')
 
 import sys
-import re
 
 from PyQt5 import QtWidgets
 from PyQt5.QtCore import QTimer
+from nltk import sent_tokenize
 
 from Database import *
 from IdentifyBadWords import *
 from ReplaceWords import *
-from Twitter import *
+from GenerateSample import *
 from loveApparatusInterface import Ui_MainWindow
 
 MAIN_TEXT_FORMAT = "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\"><html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">p, li { white-space: pre-wrap; }</style></head><body style=\" font-family:\'AlternateGotNo3D\'; font-size:95pt; font-weight:400; font-style:normal;\"><p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:80%;\">MESSAGE</p></body></html>"
@@ -32,15 +32,6 @@ class Window(Ui_MainWindow):
         # database
         self.database = Database()
 
-        # bad words
-        self.bad_words = IdentifyBadWords()
-
-        # replace words
-        self.replace_words = ReplaceWords()
-
-        # twitter
-        self.twitter = Twitter()
-
         # first sentence
         self.love_sentences()
 
@@ -49,33 +40,92 @@ class Window(Ui_MainWindow):
         timer.start(INTERVAL_SENTENCES)
 
     def love_sentences(self):
+        type_sentence = ''
+        sentence = ''
+
+        if bool(random.getrandbits(1)):
+            # normal sentence
+            type_sentence = 'normal'
+            sentence = self.generate_normal_sentence()
+        else:
+            # AI sentence
+            type_sentence = 'AI'
+            sentence = self.generate_ai_sentence()
+
+        sentence_new = self.fix_sentence(sentence)
+
+        self.mainText.setHtml(MAIN_TEXT_FORMAT.replace('MESSAGE', sentence_new))
+
+        # insert sentences in the database
+        self.database.insert_generated_sentences(sentence, sentence_new, type_sentence)
+
+        # post to twitter
+        # twitter = Twitter()
+        # twitter.update_status(sentence_new)
+
+        print("{} {}".format(sentence_new, len(sentence_new)))
+
+
+    def check_bad_words(self):
+        bad_words = IdentifyBadWords()
+
         has_bad_words = True
         sentence = ''
         while has_bad_words:
             sentence = self.database.get_love_sentence()
-            has_bad_words = self.bad_words.has_bad_words(sentence)
+            has_bad_words = bad_words.has_bad_words(sentence)
 
-        # replace words
-        mixed_sentence = self.replace_words.replace(sentence)
+        return sentence
 
+    def generate_ai_sentence(self):
+        print(">>> AI")
+        sample = GenerateSample()
+        sentence = ''
+        with_love = []
+
+        sampled_sentence = ''
+        found_sentence = False
+
+        while not found_sentence:
+            # get sampled sentence and fix the issue with '.'
+            sampled_sentence = self.check_bad_words()
+            sampled_sentence = re.sub('[.]+', ',', sampled_sentence)
+
+            ai_generated_sentence = sample.get_sample('trainNeuralNetwork/trainedModel/charRNN_1.4856_1.2345_bo.ckpt',
+                                                      True, 1000, sampled_sentence, 10)
+            sentences = sent_tokenize(ai_generated_sentence)
+
+            for s in sentences:
+                if 'love' in s.lower() and len(s) < 140:
+                    with_love.append(s)
+
+            if with_love:
+                sentence = with_love[random.randint(0, len(with_love) - 1)]
+                found_sentence = True
+
+        replace_words = ReplaceWords()
+
+        return replace_words.replace(sentence)
+
+    def generate_normal_sentence(self):
+        print(">>> NORMAL SENTENCE")
+        replace_words = ReplaceWords()
+        sentence = self.check_bad_words()
+        return replace_words.replace(sentence)
+
+    def fix_sentence(self, sentence):
         # fix "I" and "I'm"
         rx = r"\bi\b"
-        mixed_sentence = re.sub(rx, 'I', mixed_sentence)
+        sentence = re.sub(rx, 'I', sentence)
         rx = r"\bi'm\b"
-        mixed_sentence = re.sub(rx, "I'm", mixed_sentence)
-        mixed_sentence = mixed_sentence.replace("_", " ")
+        sentence = re.sub(rx, "I'm", sentence)
+        sentence = sentence.replace("_", " ")
 
         # insert line break after '.'
         rx = r"\. "
-        sentence_new_lines = re.sub(rx, '.<br />', mixed_sentence)
-        self.mainText.setHtml(MAIN_TEXT_FORMAT.replace('MESSAGE', sentence_new_lines))
-        print("{} {}".format(sentence_new_lines, len(sentence_new_lines)))
+        sentence = re.sub(rx, '.<br />', sentence)
 
-        # insert sentences in the database
-        self.database.insert_generated_sentences(sentence, mixed_sentence)
-
-        # post to twitter
-        self.twitter.update_status(mixed_sentence)
+        return sentence
 
 
 def main():
