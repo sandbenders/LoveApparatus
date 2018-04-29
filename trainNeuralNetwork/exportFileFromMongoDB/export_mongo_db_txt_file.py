@@ -14,7 +14,7 @@ bad_words = IdentifyBadWords('../../listBadWords/full-list-of-bad-words-utf-8.tx
 
 pipeline = [
             {'$project': {'_id': 0, 'text': 1}},
-            {'$redact': {'$cond': [{'$lte': [{'$strLenCP': '$text'}, 140]}, '$$KEEP', '$$PRUNE']}}
+            # {'$redact': {'$cond': [{'$lte': [{'$strLenCP': '$text'}, 140]}, '$$KEEP', '$$PRUNE']}}
         ]
 
 texts = list(db[COLLECTION_NAME].aggregate(pipeline))
