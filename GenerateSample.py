@@ -1,4 +1,4 @@
-from trainNeuralNetwork.charRNN.model import load_model, sample
+from trainNeuralNetwork.charRNN_local.model import load_model, sample
 
 class GenerateSample:
     def __init__(self):
