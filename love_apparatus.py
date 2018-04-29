@@ -1,14 +1,10 @@
-# pyuic5 loveApparatusInterface.ui -o ../loveApparatusInterface.py
-# nltk.download('punkt')
-# nltk.download('averaged_perceptron_tagger')
-# nltk.download('wordnet')
-
 import sys
 
 from PyQt5 import QtWidgets
 from PyQt5.QtCore import QTimer
 from nltk import sent_tokenize
 
+from Twitter import *
 from Database import *
 from IdentifyBadWords import *
 from ReplaceWords import *
@@ -59,11 +55,13 @@ class Window(Ui_MainWindow):
         # insert sentences in the database
         self.database.insert_generated_sentences(sentence, sentence_new, type_sentence)
 
-        # post to twitter
-        # twitter = Twitter()
-        # twitter.update_status(sentence_new)
-
         print("{} {}".format(sentence_new, len(sentence_new)))
+
+        # post to twitter
+        sentence_new += ' #LoveLeics'
+        if len(sentence_new) < 140:
+            twitter = Twitter()
+            twitter.update_status(sentence_new)
 
 
     def check_bad_words(self):
