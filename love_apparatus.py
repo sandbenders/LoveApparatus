@@ -6,6 +6,7 @@ from PyQt5 import QtWidgets
 from PyQt5.QtCore import QTimer
 from nltk import sent_tokenize
 
+from TimeControlTwitter import *
 from Twitter import *
 from Database import *
 from IdentifyBadWords import *
@@ -27,6 +28,9 @@ class Window(Ui_MainWindow):
         # config the window
         self.setupUi(window)
 
+        # check if one hour has passed - to post on twitter
+        self.time_control_twitter = TimeControlTwitter()
+
         # database
         self.database = Database()
 
@@ -36,6 +40,7 @@ class Window(Ui_MainWindow):
         # loop
         timer.timeout.connect(self.love_sentences)
         timer.start(INTERVAL_SENTENCES)
+
 
     def love_sentences(self):
         type_sentence = ''
@@ -57,14 +62,16 @@ class Window(Ui_MainWindow):
         # insert sentences in the database
         self.database.insert_generated_sentences(sentence, sentence_new, type_sentence)
 
-        print("{} {}".format(sentence_new, len(sentence_new)))
+        print("{} {}".format(sentence_new.replace('<br />', ' '), len(sentence_new)))
 
         # post to twitter
-        sentence_new += ' #LoveLeics'
+        # check if 1 hour has passed
         if len(sentence_new) < 140:
-            twitter = Twitter()
-            twitter.update_status(sentence_new)
-
+            if self.time_control_twitter.check_one_hour_has_passed():
+                sentence_new += ' #LoveLeics'
+                twitter = Twitter()
+                twitter.update_status(sentence_new)
+                print(">>> posted on twiter")
 
     def check_bad_words(self):
         bad_words = IdentifyBadWords()
@@ -90,7 +97,7 @@ class Window(Ui_MainWindow):
             # get sampled sentence and fix the issue with '.'
             sampled_sentence = self.check_bad_words()
             sampled_sentence = re.sub('[.]+', ',', sampled_sentence)
-            
+
             if 'tegra' in platform.release():
                 # jetson
                 trained_model = 'trainNeuralNetwork/trainedModel/jetson/jetson.ckpt'

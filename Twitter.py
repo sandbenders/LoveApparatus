@@ -14,6 +14,6 @@ class Twitter:
 
     def update_status(self, sentence):
         try:
-            self.api.update_status(sentence)
+            self.api.update_status(sentence.replace('<br />', ' '))
         except:
             pass
