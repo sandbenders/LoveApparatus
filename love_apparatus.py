@@ -1,4 +1,5 @@
 import sys
+import platform
 
 from PyQt5 import QtWidgets
 from PyQt5.QtCore import QTimer
@@ -88,8 +89,14 @@ class Window(Ui_MainWindow):
             # get sampled sentence and fix the issue with '.'
             sampled_sentence = self.check_bad_words()
             sampled_sentence = re.sub('[.]+', ',', sampled_sentence)
+            
+            if 'tegra' in platform.release():
+                # jetson
+                trained_model = 'trainNeuralNetwork/trainedModel/jetson/jetson.ckpt'
+            else:
+                trained_model = 'trainNeuralNetwork/trainedModel/charRNN_1.4856_1.2345_bo.ckpt'
 
-            ai_generated_sentence = sample.get_sample('trainNeuralNetwork/trainedModel/charRNN_1.4856_1.2345_bo.ckpt',
+            ai_generated_sentence = sample.get_sample(trained_model,
                                                       True, 1000, sampled_sentence, 10)
             sentences = sent_tokenize(ai_generated_sentence)
 
