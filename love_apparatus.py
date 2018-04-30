@@ -1,4 +1,5 @@
 import sys
+import os
 import platform
 
 from PyQt5 import QtWidgets
@@ -96,7 +97,7 @@ class Window(Ui_MainWindow):
             else:
                 trained_model = 'trainNeuralNetwork/trainedModel/charRNN_1.4856_1.2345_bo.ckpt'
 
-            ai_generated_sentence = sample.get_sample(trained_model,
+            ai_generated_sentence = sample.get_sample(os.path.join(os.path.dirname(__file__), trained_model),
                                                       True, 1000, sampled_sentence, 10)
             sentences = sent_tokenize(ai_generated_sentence)
 
