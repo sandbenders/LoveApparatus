@@ -14,7 +14,7 @@ from ReplaceWords import *
 from GenerateSample import *
 from loveApparatusInterface import Ui_MainWindow
 
-MAIN_TEXT_FORMAT = "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\"><html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">p, li { white-space: pre-wrap; }</style></head><body style=\" font-family:\'AlternateGotNo3D\'; font-size:95pt; font-weight:400; font-style:normal;\"><p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:80%;\">MESSAGE</p></body></html>"
+MAIN_TEXT_FORMAT = "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\"><html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">p, li { white-space: pre-wrap; }</style></head><body style=\" font-family:\'AlternateGotNo3D\'; font-size:140pt; color:#222222; font-weight:400; font-style:normal;\"><p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:80%;\">MESSAGE</p></body></html>"
 INTERVAL_SENTENCES = 30000
 
 # loop - it is here to do not get garbage collected!!!
@@ -57,7 +57,10 @@ class Window(Ui_MainWindow):
 
         sentence_new = self.fix_sentence(sentence)
 
-        self.mainText.setHtml(MAIN_TEXT_FORMAT.replace('MESSAGE', sentence_new))
+        # love in red
+        sentence_love_red = re.sub(r'\blove\b', '<span style="color: #CC0000; font-size:160pt">LOVE</span>', sentence_new, flags=re.IGNORECASE)
+
+        self.mainText.setHtml(MAIN_TEXT_FORMAT.replace('MESSAGE', sentence_love_red))
 
         # insert sentences in the database
         self.database.insert_generated_sentences(sentence, sentence_new, type_sentence)

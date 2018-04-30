@@ -17,63 +17,46 @@
    <string>#LoveApparatus</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(0, 0, 0);</string>
+   <string notr="true">background-color: rgb(255, 255, 0);</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="autoFillBackground">
     <bool>false</bool>
    </property>
-   <widget class="QLabel" name="title">
-    <property name="geometry">
-     <rect>
-      <x>80</x>
-      <y>80</y>
-      <width>581</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(247, 169, 65);
-font: 50pt &quot;Alternate Gothic No2 D&quot;;
-</string>
-    </property>
-    <property name="text">
-     <string>#LoveApparatus</string>
-    </property>
-   </widget>
    <widget class="QLabel" name="info">
     <property name="geometry">
      <rect>
-      <x>80</x>
-      <y>960</y>
-      <width>1751</width>
-      <height>31</height>
+      <x>0</x>
+      <y>1040</y>
+      <width>1921</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: rgb(130, 150, 180);
+     <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(248, 169, 65);
 font: 25pt &quot;Alternate Gothic No2 D&quot;;
 </string>
     </property>
     <property name="text">
-     <string>tweet using the hashtags #LoveApparatus or #LoveLeics</string>
+     <string>     #LoveApparatus - tweet using the hashtags #LoveApparatus or #LoveLeics</string>
     </property>
    </widget>
    <widget class="QTextEdit" name="mainText">
     <property name="geometry">
      <rect>
-      <x>80</x>
-      <y>240</y>
-      <width>1760</width>
-      <height>631</height>
+      <x>39</x>
+      <y>40</y>
+      <width>1841</width>
+      <height>981</height>
      </rect>
     </property>
     <property name="cursor" stdset="0">
      <cursorShape>BlankCursor</cursorShape>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 255);
-border:5px solid rgb(0, 0, 0);
+     <string notr="true">color: rgb(0, 0, 0);
+border:5px solid rgb(255, 255, 0);
 font: 100pt &quot;AlternateGotNo3D&quot;;</string>
     </property>
     <property name="verticalScrollBarPolicy">
