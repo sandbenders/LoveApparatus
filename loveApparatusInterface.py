@@ -25,7 +25,7 @@ class Ui_MainWindow(object):
 "")
         self.info.setObjectName("info")
         self.mainText = QtWidgets.QTextEdit(self.centralwidget)
-        self.mainText.setGeometry(QtCore.QRect(39, 40, 1841, 981))
+        self.mainText.setGeometry(QtCore.QRect(39, 10, 1841, 1071))
         self.mainText.viewport().setProperty("cursor", QtGui.QCursor(QtCore.Qt.BlankCursor))
         self.mainText.setStyleSheet("color: rgb(0, 0, 0);\n"
 "border:5px solid rgb(255, 255, 0);\n"
@@ -34,6 +34,8 @@ class Ui_MainWindow(object):
         self.mainText.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
         self.mainText.setReadOnly(True)
         self.mainText.setObjectName("mainText")
+        self.mainText.raise_()
+        self.info.raise_()
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)

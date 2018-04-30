@@ -138,8 +138,8 @@ class Window(Ui_MainWindow):
         sentence = sentence.replace("_", " ")
 
         # insert line break after '.'
-        rx = r"\. "
-        sentence = re.sub(rx, '.<br />', sentence)
+        # rx = r"\. "
+        # sentence = re.sub(rx, '.<br />', sentence)
 
         return sentence
 

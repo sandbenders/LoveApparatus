@@ -46,9 +46,9 @@ font: 25pt &quot;Alternate Gothic No2 D&quot;;
     <property name="geometry">
      <rect>
       <x>39</x>
-      <y>40</y>
+      <y>10</y>
       <width>1841</width>
-      <height>981</height>
+      <height>1071</height>
      </rect>
     </property>
     <property name="cursor" stdset="0">
@@ -76,6 +76,8 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
+   <zorder>mainText</zorder>
+   <zorder>info</zorder>
   </widget>
  </widget>
  <resources/>
