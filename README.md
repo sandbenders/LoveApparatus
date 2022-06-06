@@ -4,7 +4,7 @@
 
 [![Love Apparatus](loveApparatus.png)](https://www.youtube.com/watch?v=8UIpAYbyCj8)
 
-_LOVE APPARATUS_ is a Creative AI installation programmed in Python, and specially created for the [Art-AI Festival](https://www.art-ai.io/), in Leicester, UK. It ran on an NVIDIA Jetson board.
+_LOVE APPARATUS_ is a Creative AI installation programmed in Python, and specially created for the [Art-AI Festival](https://www.art-ai.io/), in Leicester, UK. It runs on an NVIDIA Jetson board.
 
 It generates love text aphorisms based on classic texts, poems and novels about love and on postings to the Twitter account [@apparatus_love](https://twitter.com/apparatus_love).
 
